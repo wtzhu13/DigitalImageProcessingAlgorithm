@@ -2,8 +2,9 @@
 %% author:wtzhu
 %% email:wtzhu_13@163.com
 %% date: 20210316
-%% fuction: Sobel 交叉梯度算子
+%% fuction: Prewitt 交叉梯度算子
 %% --------------------------------
+
 clear;
 clc;
 close all;
@@ -15,8 +16,8 @@ I = im2double(f);
 B=zeros(size(f));
 for x=2:m-2
     for y=2:n-2
-        B(x,y)=abs(I(x+1, y-1)+2*I(x+1, y)+I(x+1, y+1)-I(x-1, y-1)-2*I(x-1, y)-I(x-1, y+1)) ...
-              +abs(I(x-1, y+1)+2*I(x, y+1)+I(x+1, y+1)-I(x-1, y-1)-2*I(x, y-1)-I(x+1, y-1));
+        B(x,y)=abs(I(x+1, y-1)+I(x+1, y)+I(x+1, y+1)-I(x-1, y-1)-I(x-1, y)-I(x-1, y+1)) ...
+              +abs(I(x-1, y+1)+I(x, y+1)+I(x+1, y+1)-I(x-1, y-1)-I(x, y-1)-I(x+1, y-1));
     end
 end
 B_max = max(max(B));
