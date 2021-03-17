@@ -8,18 +8,11 @@
 clear;
 clc;
 close all;
-m = [0 0 0 255 255 255;
-     0 0 0 255 255 255;
-     0 0 0 255 255 255;
-     0 0 0 255 255 255;
-     0 0 0 255 255 255;
-     0 0 0 255 255 255;];
-img = imread('./images/blurry_moon.tif');
+img = imread('./images/house.tif');
 [height, width] = size(img);
-figure;imshow(img);title('original image');
+figure;subplot(121);imshow(img);title('original image');
 
 img1 = im2single(img);
 w = fspecial('laplacian', 0);
 I1 = imfilter(img, w, 'replicate');
-figure;imshow(I1);title('laplacian image');
-figure;imshow(img-I1);title('laplacian image');
+subplot(122);imshow(I1);title('laplacian image');
